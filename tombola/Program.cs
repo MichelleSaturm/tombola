@@ -7,11 +7,6 @@ namespace tombola
     {
         static void Main(string[] args)
         {
-            //Cose che non ho fatto:
-            //- Controllo doppioni inseriti dall'utente
-            //- Scelta di difficoltà
-
-
 
             //Scritta di benvenuto da mostrare solo all'inizio
             Console.WriteLine("Benvenuto al gioco della Tombola!!");
@@ -32,6 +27,56 @@ namespace tombola
                 var risultato = Confronto(cartelletta, estrazione);
 
 
+                #region Controllo
+                if (risultato.Count == 2)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Complimenti hai vinto facendo Ambo!\nQuesti sono i tuoi due numeri vincenti!");
+                    foreach (int w in risultato)
+                    {
+                        Console.Write($"{w} - ");
+                    }
+                }
+                else if (risultato.Count == 3)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Complimenti hai vinto facendo Terno!\nQuesti sono i tuoi tre numeri fortunati!");
+                    foreach (int w in risultato)
+                    {
+                        Console.Write($"{w} - ");
+                    }
+                }
+                else if (risultato.Count == 4)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Complimenti hai vinto facendo Quaterna!\nQuesti sono i tuoi quattro numeri vincenti!");
+                    foreach (int w in risultato)
+                    {
+                        Console.Write($"{w} - ");
+                    }
+                }
+                else if (risultato.Count == 5)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Complimenti hai vinto facendo Cinquina!\nQuesti sono i tuoi cinque numeri fortunati!");
+                    foreach (int w in risultato)
+                    {
+                        Console.Write($"{w} - ");
+                    }
+                }
+                else if (risultato.Count == 15)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Complimenti hai vinto facendo Tombola!!!\nQuesti sono i tuoi numeri!");
+                    foreach (int w in risultato)
+                    {
+                        Console.Write($"{w} - ");
+                    }
+                    Console.WriteLine("PS. Regalami un po' della tua fortuna!");
+                }
+                else
+                { Console.WriteLine("Mi dispiace. Ma non hai vinto."); }
+                #endregion
 
                 //Continua a giocare
                 Console.WriteLine("Vuoi rigiocare? Scrivi 'n' per uscire oppure premi un qualsiasi altro tasto per continuare a giocare.");
@@ -78,7 +123,7 @@ namespace tombola
             }
             #endregion
 
-            //fase di estrazione dei numeri
+
             #region Numeri Estratti
             int[] numeriEstratti()
             {
@@ -103,7 +148,6 @@ namespace tombola
 
             #endregion
 
-            //fase di confronto numeri utente ed estrazioni della cpu
             #region Confronto Estrazioni
             List<int> Confronto(int[] utente, int[] cpu)
             {
@@ -126,7 +170,6 @@ namespace tombola
 
 
             #endregion
-
         }
     }
 }
